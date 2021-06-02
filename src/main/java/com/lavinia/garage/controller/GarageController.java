@@ -1,15 +1,15 @@
 package com.lavinia.garage.controller;
 
 import com.lavinia.garage.model.Carro;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("api/carro")
 public class GarageController {
-    @GetMapping()
-    public Carro teste1() {
+
+    @GetMapping
+    public Carro findAll() {
         Carro carro = new Carro();
         carro.setCor("preto");
         carro.setNome("Ford");
@@ -20,7 +20,11 @@ public class GarageController {
         carro.setCombustivel("Gasolina");
 
         return carro;
+    }
 
+    @PostMapping
+    public void create (@RequestBody Carro carro){
+        System.out.println(carro);
     }
 
     @GetMapping(value = "ok")
